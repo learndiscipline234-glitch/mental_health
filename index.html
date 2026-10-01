@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mental Health Predictor</title>
+  <meta name="description" content="A machine-learning demo that predicts a mental health score from lifestyle and social media habits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#home">Mental Health Predictor</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#predictor">Predictor</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>AI-Powered Mental Health Predictor</h1>
+        <p>Understand how lifestyle and social media habits may relate to your predicted mental health score.</p>
+        <a class="btn" href="#predictor" id="startBtn">Start Prediction</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+        <div class="chip c1">Sleep</div><div class="chip c2">Screen time</div><div class="chip c3">Stress</div>
+      </div>
+    </section>
+
+    <section class="wrap" id="predictor">
+      <div class="card" id="formCard">
+        <h2>Your habits</h2>
+        <p class="lead">Fill in all fields. Nothing is stored; your answers are only used to generate the prediction.</p>
+
+        <form id="predictForm" novalidate>
+          <fieldset>
+            <legend>Personal information</legend>
+            <div class="grid">
+              <div class="field"><label for="age">Age</label>
+                <input type="number" id="age" name="age" min="10" max="100" step="1" placeholder="e.g. 21" required>
+                <small>Between 10 and 100.</small><span class="err" data-for="age"></span></div>
+              <div class="field"><label for="gender">Gender</label>
+                <select id="gender" name="gender" required><option value="">Select…</option><option>Male</option><option>Female</option></select>
+                <span class="err" data-for="gender"></span></div>
+              <div class="field"><label for="country">Country</label>
+                <select id="country" name="country" required><option value="">Select…</option><option>India</option><option>USA</option><option>UK</option><option>Canada</option><option>Australia</option><option>Germany</option><option>France</option><option>Mexico</option><option>Turkey</option><option>Other</option></select>
+                <small>Choose Other if yours isn't listed.</small><span class="err" data-for="country"></span></div>
+              <div class="field"><label for="academic_level">Academic level</label>
+                <select id="academic_level" name="academic_level" required><option value="">Select…</option><option>High School</option><option>Undergraduate</option><option>Graduate</option></select>
+                <span class="err" data-for="academic_level"></span></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Social media usage</legend>
+            <div class="grid">
+              <div class="field"><label for="most_used_platform">Most used platform</label>
+                <select id="most_used_platform" name="most_used_platform" required><option value="">Select…</option>
+                  <option>Facebook</option><option>LinkedIn</option><option>Instagram</option><option>Snapchat</option><option>Twitter</option><option>YouTube</option><option>TikTok</option><option>LINE</option><option>KakaoTalk</option><option>VKontakte</option><option>WhatsApp</option><option>WeChat</option></select>
+                <span class="err" data-for="most_used_platform"></span></div>
+              <div class="field"><label for="purpose_of_use">Main purpose of use</label>
+                <select id="purpose_of_use" name="purpose_of_use" required><option value="">Select…</option><option>Networking</option><option>Education</option><option>Entertainment</option><option>News</option></select>
+                <span class="err" data-for="purpose_of_use"></span></div>
+              <div class="field"><label for="avg_daily_usage_hours">Daily usage (hours)</label>
+                <input type="number" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.1" placeholder="e.g. 4.5" required>
+                <small>Total time on social media per day.</small><span class="err" data-for="avg_daily_usage_hours"></span></div>
+              <div class="field"><label for="daily_unlocks">Daily phone unlocks</label>
+                <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" step="1" placeholder="e.g. 50" required>
+                <small>Check your phone's screen-time stats.</small><span class="err" data-for="daily_unlocks"></span></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Lifestyle</legend>
+            <div class="grid">
+              <div class="field"><label for="study_hours">Study hours per day</label>
+                <input type="number" id="study_hours" name="study_hours" min="0" max="24" step="0.1" placeholder="e.g. 5" required>
+                <span class="err" data-for="study_hours"></span></div>
+              <div class="field"><label for="physical_activity_hours">Physical activity (hours per day)</label>
+                <input type="number" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24" step="0.1" placeholder="e.g. 1" required>
+                <span class="err" data-for="physical_activity_hours"></span></div>
+              <div class="field"><label for="sleep_hours_per_night">Sleep per night (hours)</label>
+                <input type="number" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.1" placeholder="e.g. 7" required>
+                <span class="err" data-for="sleep_hours_per_night"></span></div>
+              <div class="field"><label for="stress_level">Stress level</label>
+                <select id="stress_level" name="stress_level" required><option value="">Select…</option><option>Low</option><option>Medium</option><option>High</option><option>Very High</option></select>
+                <span class="err" data-for="stress_level"></span></div>
+            </div>
+          </fieldset>
+
+          <div class="alert" id="errorBox" role="alert" hidden></div>
+          <button type="submit" class="btn btn-wide" id="submitBtn"><span class="spinner" aria-hidden="true"></span><span id="btnLabel">Predict Mental Health Score</span></button>
+        </form>
+      </div>
+
+      <div class="card result" id="resultCard" hidden aria-live="polite">
+        <p class="result-label">Your predicted mental health score</p>
+        <div class="score" id="scoreValue">0</div>
+        <p class="result-note">Prediction generated successfully.</p>
+        <div class="disclaimer"><strong>Important disclaimer</strong>
+          <p>This prediction is generated by a machine-learning model for educational purposes only. It is not a medical diagnosis or a substitute for professional mental-health advice.</p></div>
+        <button type="button" class="btn" id="againBtn">Predict Again</button>
+      </div>
+    </section>
+
+    <section class="wrap about" id="about">
+      <h2>About this project</h2>
+      <p>This is a machine-learning portfolio project. A scikit-learn model, served by a FastAPI backend, estimates a mental health score from age, country, academic level, social media habits, sleep, study time, physical activity and stress level.</p>
+      <p>The model learns patterns from a survey dataset. It shows correlations, not causes, and it can't assess any individual. If you're struggling, please talk to a qualified professional.</p>
+    </section>
+  </main>
+
+  <footer class="footer">Built with HTML, CSS, JavaScript, FastAPI and scikit-learn. For education only.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
