@@ -1,5 +1,5 @@
 // Change this to your Render backend URL before deploying to Vercel.
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://mental-health-2-2nv0.onrender.com";
 
 const REQUEST_TIMEOUT_MS = 60000; // Render free tier can take ~50s to wake up
 const SLOW_HINT_MS = 6000;
