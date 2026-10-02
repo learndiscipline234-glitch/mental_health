@@ -123,7 +123,7 @@ def predict(data: StudentData):
         'Physical_Activity_Hours': data.physical_activity_hours,
         'Sleep_Hours_Per_Night': data.sleep_hours_per_night,
         'Stress_Level': data.stress_level,
-        'Grouped_country': country_group
+        'Grouped_countries': country_group
     }])
 
     prediction = model.predict(input_row)[0]
